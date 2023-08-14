@@ -8,6 +8,7 @@ import jwtDecode from "jwt-decode";
 import { dashboardContext } from "../../context/DashBoardContext";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from "react-router-dom";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 export const TestNav = () => {
   const navigate=useNavigate()
     const {getUserInfo,userInfo}=useContext(dashboardContext)
@@ -48,7 +49,7 @@ export const TestNav = () => {
                 color:"black"
             }}} icon={<ShoppingCartIcon color="primary"/>}> List Item</MenuItem>
             <MenuItem icon={<AddIcon color="primary"/>}> Add Item</MenuItem>
-            <MenuItem icon={<ShoppingCartIcon color="primary"/>}> Calender </MenuItem>
+            <MenuItem icon={<CalendarMonthIcon color="primary"/>}> Calender </MenuItem>
           </Menu>
         </Sidebar>
       </Box>

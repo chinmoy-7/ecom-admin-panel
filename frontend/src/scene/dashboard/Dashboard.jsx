@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import {Box,Grid} from "@mui/material"
-import { SideNav } from '../global/SideNav'
 import { TestNav } from '../global/TestNav'
 import { dashboardContext } from '../../context/DashBoardContext'
 import { authContext } from '../../context/AuthContext'

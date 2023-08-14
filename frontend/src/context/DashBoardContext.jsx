@@ -15,6 +15,7 @@ const DashboardContextProvider = ({ children }) => {
   const [editLoading, setEditLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [editOpen,setEditOpen]=useState(false)
+  const [refresh,setRefresh]=useState(false)
   const headers = {
     token: sessionStorage.getItem("token"),
   };
@@ -31,6 +32,9 @@ const DashboardContextProvider = ({ children }) => {
   //Add New Product to DB
   const addItem = async () => {
     try {
+      for(let i of Object.values(formData)){
+        console.log(i)
+      }
       setIsLoading(true);
       const form = new FormData();
       form.append("productName", formData.product_name);
@@ -39,7 +43,7 @@ const DashboardContextProvider = ({ children }) => {
       form.append("quantity", formData.product_name);
       form.append("image", formData.image);
       const res = await axios.post(
-        "http://localhost:4000/api/v1/add-product",
+        "https://ecom-admin-zshx.onrender.com/api/v1/add-product",
         formData,
         {
           headers: {
@@ -48,7 +52,8 @@ const DashboardContextProvider = ({ children }) => {
           },
         }
       );
-      getAllItem();
+      getAllItem()
+     console.log(res)
     } catch (e) {
       alert(e.message);
     } finally {
@@ -59,7 +64,7 @@ const DashboardContextProvider = ({ children }) => {
 
   //Fetch All the products
   const getAllItem = async () => {
-    const items = await axios.get("http://localhost:4000/api/v1/get-product", {
+    const items = await axios.get("https://ecom-admin-zshx.onrender.com/api/v1/get-product", {
       headers: headers,
     });
     setAllItems(items.data.data);
@@ -92,7 +97,7 @@ const DashboardContextProvider = ({ children }) => {
     try {
       setDelLoading(true);
       const deleted = await axios.delete(
-        `http://localhost:4000/api/v1/del-product/${id}`,
+        `https://ecom-admin-zshx.onrender.com/api/v1/del-product/${id}`,
         { headers: headers }
       );
       getAllItem()
@@ -111,10 +116,10 @@ const DashboardContextProvider = ({ children }) => {
         data.append("id",editData.id);
         data.append("product_name", editData.product_name);
         data.append("price", editData.price);
-        data.append("desscription", editData.desscription);
+        data.append("description", editData.description);
         data.append("quantity", editData.quantity);
         data.append("image", editData.image);
-        const editedData = await axios.put("http://localhost:4000/api/v1/update-product",data,{headers:{
+        const editedData = await axios.put("https://ecom-admin-zshx.onrender.com/api/v1/update-product",data,{headers:{
             "Content-Type":"multipart/form-data",
             token:headers.token
         }})

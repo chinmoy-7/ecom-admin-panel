@@ -31,12 +31,17 @@ export const Table = () => {
   const handleGrid = (param) => {
     setGridApi(param);
   };
+  const exportCsv=()=>{
+    gridApi.api.exportDataAsCsv()
+    // console.log(gridApi)
+  }
   const columnDef = [
     { headerName: "id", field: "id",editable:false },
     { headerName: "Product Name", field: "product_name" },
     { headerName: "price", field: "price" },
     { headerName: "ImageUrl", field: "image_url" },
     { headerName: "Quantity", field: "quantity" },
+    { headerName: "Description", field: "description" },
     {
       headerName: "Action",
       field: "action",
@@ -72,6 +77,7 @@ export const Table = () => {
   };
   return (
     <>
+    <Grid container gap={2}>
       <Button
         variant="contained"
         color="secondary"
@@ -79,6 +85,8 @@ export const Table = () => {
       >
         Add Item
       </Button>
+      <Button variant="outlined" color="success" onClick={exportCsv}>Export CSV</Button>
+      </Grid>
       <FullScreenDialog open={{ open, handleClose }} />
       <EditDialogSlide open={{ open, handleClose }}/>
       <Box className="ag-theme-alpine" sx={{ height: "100%", width: "100%" }}>

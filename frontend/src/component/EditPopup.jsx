@@ -10,6 +10,8 @@ import { dashboardContext } from "../context/DashBoardContext";
 import { InputLabel, TextField } from "@mui/material";
 import LinearProgress from '@mui/material/LinearProgress';
 import {Grid} from "@mui/material";
+import { useFormik } from "formik";
+import { editSchema } from "../schemas";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -24,7 +26,9 @@ export default function EditDialogSlide() {
     handleEdit,
     editLoading
   } = React.useContext(dashboardContext);
-console.log(editData)
+
+
+
   return (
     <div>
      
@@ -45,6 +49,7 @@ console.log(editData)
               <InputLabel htmlFor="product_name"> Product Name</InputLabel>
               <TextField
                 variant="outlined"
+                required
                 value={editData.product_name}
                 onChange={(e) =>
                   setEditData({ ...editData, product_name: e.target.value })
@@ -57,6 +62,7 @@ console.log(editData)
               <TextField
                 variant="outlined"
                 value={editData.price}
+                required
                 margin="dense"
                 id="price"
                 fullWidth
@@ -69,6 +75,7 @@ console.log(editData)
                 variant="outlined"
                 value={editData.description}
                 margin="dense"
+                required
                 id="desc"
                 fullWidth
                 onChange={(e) =>
@@ -81,6 +88,7 @@ console.log(editData)
                 value={editData.quantity}
                 margin="dense"
                 id="quantity"
+                required
                 fullWidth
                 onChange={(e) =>
                   setEditData({ ...editData, quantity: e.target.value })

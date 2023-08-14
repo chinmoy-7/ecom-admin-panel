@@ -13,14 +13,15 @@ import {
   IconButton,
   Avatar,
   Typography,
-  Button
+  Button,
+  LinearProgress
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { signupSchema } from "../schemas";
 import { authContext } from "../context/AuthContext";
 export const Signup = () => {
-    const {handleSignup} = useContext(authContext)
+    const {handleSignup,loading} = useContext(authContext)
     const initialValues={
         name:"",
         email:"",
@@ -145,6 +146,7 @@ export const Signup = () => {
             onBlur={handleBlur}
             helperText={errors["secret"]!=""&&touched.secret!=""?errors.secret:null}
             />
+            <h3>Secret key for admin is access "abcd"</h3>
           </Grid>
           <Grid item xs={12}>
             <Button type="submit" 
@@ -153,6 +155,9 @@ export const Signup = () => {
 
               Sign In
             </Button>
+            <Grid display={`${loading==true?"":"none"}`}>
+              <LinearProgress></LinearProgress>
+              </Grid>
           </Grid>
           <Grid  item xs={12}>
               <Link to="/" style={{color:"blue"}} color={"primary"}>Already have an Account? Login</Link>

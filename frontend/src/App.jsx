@@ -5,6 +5,7 @@ import { Signup } from "./component/Signup";
 // import  {AuthContextProvider}  from "./context/AuthContext";
 import { AuthContextProvider } from "./context/AuthContext";
 import { DashboardContextProvider } from "./context/DashBoardContext";
+import Customer from "./scene/Customer";
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Login />} /> 
         <Route path="/signup" element={<Signup />} /> 
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/customer" element={<Customer />} />
       </Routes>
       </DashboardContextProvider>
     </AuthContextProvider>

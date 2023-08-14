@@ -25,15 +25,15 @@ export default function FullScreenDialog({open}) {
         onClose={open.handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>Add new Item</DialogTitle>
+                <DialogTitle>Add new Item</DialogTitle>
         <DialogContent>
-        <form > 
+            <form > 
             <TextField variant='outlined' label="Product Name" margin='dense' id="product_name" onChange={(e)=>{setFormData({...formData,product_name:e.target.value})}} fullWidth/>
             <TextField variant='outlined' label="Price" margin='dense' id="price" onChange={(e)=>{setFormData({...formData,price:e.target.value})}} fullWidth/>
             <TextField variant='outlined' label="Description" margin='dense' id="desc" onChange={(e)=>{setFormData({...formData,description:e.target.value})}} fullWidth/>
             <TextField variant='outlined' label="Quantity" margin='dense' id="quantity" onChange={(e)=>{setFormData({...formData,quantity:e.target.value})}} fullWidth/>
             <input type="file" onChange={(e)=>{setFormData({...formData,image:e.target.files[0]})}}/>
-        </form>
+</form>
         </DialogContent>
         <DialogActions>
           <Button onClick={open.handleClose} variant='outlined' color='warning'>Cancel</Button>
@@ -42,7 +42,7 @@ export default function FullScreenDialog({open}) {
         <Grid display={`${isLoading?"":"none"}`}>
         <LinearProgress></LinearProgress>
         </Grid>
-      </Dialog>
+              </Dialog>
     </div>
   );
 }

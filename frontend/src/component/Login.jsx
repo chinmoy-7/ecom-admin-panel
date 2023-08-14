@@ -86,8 +86,8 @@ export const Login = () => {
               type={visibility?"text":"password"}
               variant="outlined"
               color="secondary"
-              onMouseDown={()=>setVisibility(true)}
-              onMouseUp={()=>setVisibility(false)}
+              // onMouseEnter={()=>setVisibility(true)}
+              // onMouseLeave={()=>setVisibility(false)}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
